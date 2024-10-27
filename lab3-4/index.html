@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookNest</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="nav-left">
+                    <a href="#">BookNest</a>
+                    <a href="#">My Book</a>
+                    <a href="add_book.html">Add Book</a>
+                </div>
+                <div class="nav-right">
+                    <input type="text" placeholder="Search by book name..." id="search_book" />
+                    <button class="search-btn" id="searchButton">Search</button>
+                    <button class="clear-btn" id="clearButton">Clear</button>
+                </div>
+            </nav>
+        </header>
+
+        <div class="content">
+            <aside class="sidebar">
+                <h3>Manage book</h3>
+                <div class="sort-by" id="sortButton">
+                    <label for="sort-toggle">Sort by most pages</label>
+                    <label class="switch">
+                        <input type="checkbox" id="sort_book" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="count_pages">
+                    <label for="count_pages">Count total book pages:</label>
+                    <button class="count-btn" id="countExpenses">Count</button>
+                </div>
+                <div class="total-book-pages">
+                    <span>Total pages: </span>
+                    <strong id="total_pages"></strong>
+                </div>
+            </aside>
+
+            <main class="book-list" id="bookList">
+                <!-- Картки з книгами будуть завантажуватися через JavaScript -->
+            </main>
+        </div>
+    </div>
+
+    <!-- Підключення JavaScript файлу -->
+    <script src="js/index.js" type="module"></script>
+    <script src="js/dom_until.js" type="module"></script>
+</body>
+
+</html>
