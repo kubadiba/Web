@@ -1,0 +1,71 @@
+
+
+body {
+    color: var(--1f1534-hyfen, #1F1534);
+    font-family: Mulish;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    
+}
+
+button {
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+    color:#000;
+}
+
+hr {
+    width: 56px;
+    height: 2px;
+    border-radius: 5px;
+    background: #000;
+}
+
+li {
+    display: block;
+}
+
+/* Global classes */
+
+.conteiner {
+    margin: 0 auto;
+    max-width: 1300px ;
+}
+
+.default-button {
+    color: white;
+    border: 0;
+    border-radius: 55px;
+    padding-top: 3px;  
+    padding-bottom: 1px;
+    background: #458FF6;
+    width: 200px;
+    height: 56px;
+}
+
+.searcher__button {
+    margin-top: 39px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.default_button_outline {
+    background: transparent;
+    color: #458FF6;
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    border: 1.4px solid #458FF6; 
+    border-radius: 55px; 
+    width: 200px;
+    height: 54px;
+}
+
+

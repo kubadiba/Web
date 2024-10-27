@@ -1,0 +1,117 @@
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100px); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); 
+    }
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(100px); 
+    animation: slideUp 2s ease-out forwards;
+}
+
+.hero__img {
+    margin-top: 210px;
+    margin-left: 130px;
+    margin-right: 0;
+    width: 560px;
+    height: 470px;
+}
+
+.hero__inner {
+    width: 427px;
+    padding-top: 191px;
+    padding-bottom: 10px;
+}
+
+.hero__title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+}
+
+.hero__paragraph {
+    color: #7D7987;
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 32px; 
+    height: auto;
+    width: auto;
+}
+
+.hero__button {
+    margin-top: 48px;
+}
+
+p {
+    margin: 0;
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    background-image: url(../images/trafalgar-header-illustration1.svg);
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: 650px 540px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 131.581px;
+    height: 115px;
+    background-image: url(../images/element1.svg);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    margin-left: -5%;
+    margin-top: 5%;
+    opacity: 0.3;
+<<<<<<< Updated upstream
+=======
+}
+
+@media (max-width: 800px) {
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    .hero__img-container {
+        display: none;
+    }
+
+    .hero__inner {
+        padding: auto;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        width: auto;
+        padding-top: 91px;
+    }
+
+    .hero__title {
+        font-size: 36px;
+        line-height: 44px;
+    }
+
+    .hero__paragraph {
+        font-size: 18px;
+        line-height: 28px;
+        margin: 0 auto;
+        width: 90%;
+    }
+}
