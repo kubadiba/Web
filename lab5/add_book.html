@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Book</title>
+    <link rel="stylesheet" href="css/pac.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.2.0/uuid.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="nav-left">
+                    <a href="index.html">BookNest</a>
+                    <a href="index.html">My Book</a>
+                    <a href="#">Add Book</a>
+                </div>
+                <div class="nav-right">
+                    <input type="text" placeholder="Search by book name..." id="search_book" />
+                    <button class="search-btn" id="searchButton">Search</button>
+                    <button class="clear-btn" id="clearButton">Clear</button>
+                </div>
+            </nav>
+        </header>
+
+        <div class="content">
+            <h2>Add Book</h2>
+            <form id="addBookForm">
+                <label for="bookName">Book Name</label>
+                <input type="text" id="bookName" name="bookName" placeholder="Enter book name..." required
+                    pattern="^[A-Za-z0-9\s]{3,30}$"
+                    title="The title of the book should contain from 3 to 30 characters, only letters and numbers." />
+
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Enter description..." required minlength="10"
+                    title="Description should be at least 10 characters long."></textarea>
+
+                <label for="pageCount">pages</label>
+                <input type="number" id="pageCount" name="pageCount" min="1" required
+                    title="Pages must be a positive number greater than 0." />
+
+                <label for="genre">Genre</label>
+                <select id="genre" name="genre" required>
+                    <option value="" disabled selected>Select Type</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="romance">Romance</option>
+                    <option value="biography">Biography</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="horror">Horror</option>
+                    <option value="thriller">Thriller</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="science_fiction">Science Fiction</option>
+                    <option value="non-fiction">Non-fiction</option>
+                    <option value="historical_fiction">Historical Fiction</option>
+                    <option value="mystery">Mystery</option>
+                </select>
+
+                <button id="submit_button" type="submit" class="submit-btn">
+                    Submit
+                </button>
+            </form>
+
+            <div class="error-message" id="errorMessage">
+                <span>Oh snap! Something went wrong. Please try again.</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/addBook.js" type="module"></script>
+    <script src="js/dom_until.js" type="module"></script>
+</body>
+
+</html>
