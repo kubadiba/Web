@@ -1,0 +1,45 @@
+.tiles {
+    display: flex;
+    justify-content: space-around;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin: 2em 0;
+}
+
+.tile {
+    width: 250px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    text-align: center;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.tile:hover {
+    transform: scale(1.05);
+}
+
+.tile-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 0.5em;
+}
+
+.tile h2 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+    color: #333;
+}
+
+.tile p {
+    font-size: 0.9em;
+    color: #666;
+    max-height: 3.6em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2em;
+    margin: 0;
+}
