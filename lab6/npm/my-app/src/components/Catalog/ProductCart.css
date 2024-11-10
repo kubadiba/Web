@@ -1,0 +1,106 @@
+/* CSS для сторінки з картками */
+
+.product-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em; /* Відстань між картками, зменште за потреби */
+    margin-top: 1em;
+}
+
+.product-card {
+    width: 200px; /* Оптимальна ширина картки */
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Тінь для картки */
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Піднімання картки при наведенні */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product-image-placeholder {
+    width: 100%;
+    height: 300px; /* Висота для зображення, змініть за потреби */
+    background-color: #e0e0e0;
+    margin-bottom: 0.5em;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.product-card h2 {
+    font-size: 1em;
+    color: #555;
+    margin: 0.5em 0;
+}
+
+.product-card h3 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+    color: #333;
+    font-weight: 600;
+}
+
+.product-card p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0.5em 0;
+}
+
+.price {
+    font-weight: bold;
+    color: #007bff;
+    margin: 0.5em 0;
+    font-size: 1.1em;
+}
+
+.view-more {
+    display: inline-block;
+    margin: 1em auto 0;
+    padding: 0.6em 1.2em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.view-more:hover {
+    background-color: #0056b3;
+}
+.product-image-placeholder {
+    width: 100%;
+    height: 300px; /* Або інша потрібна вам висота */
+    background-color: #e0e0e0;
+    margin-bottom: 0.5em;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-image-placeholder img {
+    width: 100%; /* Зображення заповнює всю ширину контейнера */
+    height: 100%; /* Зображення заповнює всю висоту контейнера */
+    object-fit: cover; /* Обрізання зображення, щоб зберегти пропорції */
+    border-radius: 6px;
+}

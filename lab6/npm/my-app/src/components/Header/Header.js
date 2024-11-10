@@ -1,8 +1,8 @@
 // Header.js
 import React from 'react';
+import { Link } from 'react-router-dom'; // Додаємо Link для роботи з React Router
 import './Header.css';
-import logoImage from '../../images/book_logo.png'; 
-import HeaderButtons from '../HeaderButtons/HeaderButtons'; 
+import logoImage from '../../images/book_logo.png';
 
 function Header() {
     return (
@@ -11,7 +11,13 @@ function Header() {
                 <img src={logoImage} alt="Logo" className="header-logo" />
                 <p className="logo-text">BookShop</p>
             </div>
-            <HeaderButtons /> 
+            <div className="header-buttons"> {/* Додаємо кнопки прямо тут */}
+                <nav>
+                    <Link to="/">Home</Link>
+                    <Link to="/catalog">Catalog</Link>
+                    <a href="#cart">Cart</a>
+                </nav>
+            </div>
         </header>
     );
 }

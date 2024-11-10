@@ -1,0 +1,109 @@
+/* CatalogPage.css */
+
+.catalog-page {
+    padding: 2em;
+    background-color: #f8f9fa; /* Light background for the page */
+}
+
+.catalog-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 0.5em 1em;
+    width: 250px; /* Increased width for better usability */
+    background-color: white;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding-left: 1.5em;
+    font-size: 1em;
+    border-radius: 25px;
+    color: #333;
+    background-color: transparent;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    font-size: 1.2em;
+    color: #999;
+}
+
+.filters {
+    display: flex;
+    gap: 0.5em;
+}
+
+.filters select, .apply-button {
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.apply-button {
+    background-color: #007bff; /* Brighter blue for the button */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.apply-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.product-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    margin-top: 1em;
+}
+
+.product-card {
+    width: 220px;
+    padding: 1.5em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); /* Softer shadow for a modern look */
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Lifts the card slightly on hover */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.view-more {
+    display: inline-block;
+    margin: 1em auto 0;
+    padding: 0.6em 1.2em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.view-more:hover {
+    background-color: #0056b3;
+}
