@@ -1,0 +1,43 @@
+/* Header.css */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 1em;
+    color: white;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    width: 40px; 
+    height: auto;
+    margin-right: 0.5em;
+}
+
+.logo-text {
+    font-size: 1.2em;
+    color: white;
+}
+
+.header-buttons { /* Додаємо стилі для кнопок */
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.header-buttons nav a {
+    margin: 0 1em;
+    color: white;
+    text-decoration: none;
+}
+
+.header-buttons nav a:hover {
+    text-decoration: underline;
+}
+

@@ -14,7 +14,7 @@ const ProductCard = ({ id, image, title, description, price }) => {
             <p className="price">Price: {price}</p>
             <button className="view-more">View more</button>
         </div>
-    );
+    );  
 };
 
 export default ProductCard;
