@@ -1,0 +1,61 @@
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.hero-image {
+    width: 300px;
+    max-width: 100%;
+    background-color: #ccc;
+    margin: 3em;
+    border-radius: 8px;
+}
+
+.hero-content {
+    flex: 1;
+    text-align: left;
+    margin-right: 5em;
+}
+
+.hero-content h1 {
+    font-size: 2em;
+    margin: 1em 0;
+}
+
+.tiles-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1em 0;
+}
+
+.tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Завжди 3 колонки */
+    gap: 5em; /* Відступи між картками */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1em 0;
+}
+
+@media (max-width: 768px) {
+    .tiles {
+        grid-template-columns: repeat(2, 1fr); /* 2 колонки на середніх екранах */
+    }
+}
+
+@media (max-width: 480px) {
+    .tiles {
+        grid-template-columns: 1fr; /* 1 колонка на малих екранах */
+    }
+}

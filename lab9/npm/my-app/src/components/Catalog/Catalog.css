@@ -1,0 +1,123 @@
+.catalog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+.catalog-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 0;
+    gap: 1em;
+}
+
+.search-bar-group {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.filters {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.search-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 0.5em 1em;
+    width: 300px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding-left: 1.5em;
+    font-size: 1em;
+    border-radius: 25px;
+    color: #333;
+    background-color: transparent;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    font-size: 1.2em;
+    color: #999;
+}
+
+.apply-button {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    background-color: #6c3893;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.apply-button:hover {
+    background-color: #53337a;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2em;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Стили для заокруглених випадаючих списків */
+.filter-container select {
+    padding: 0.5em 1em;
+    border: 1px solid #ccc;
+    border-radius: 25px; /* Заокруглені краї */
+    font-size: 1em;
+    outline: none;
+    cursor: pointer;
+    background-color: #f8f8f8; /* Світлий фон */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.filter-container select:hover {
+    border-color: #6c3893; /* Зміна кольору при наведенні */
+    box-shadow: 0 0 5px rgba(108, 56, 147, 0.3); /* Невелика тінь при наведенні */
+}
+
+.filter-container select:focus {
+    border-color: #6c3893;
+    box-shadow: 0 0 8px rgba(108, 56, 147, 0.5); /* Більша тінь при фокусі */
+}
+
+.catalog-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2em;
+    width: 100%;
+    max-width: 1200px;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+/* src/Catalog.css */
+.spinner {
+    font-size: 1.5em;
+    color: #6c3893;
+    text-align: center;
+    padding: 2em;
+}
