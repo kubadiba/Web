@@ -1,46 +1,27 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; 
 import Header from './components/Header/Header';
-import MainContent from './components/MainContent/MainContent';
 import Footer from './components/Footer/Footer';
+import CatalogProvider from './components/Catalog/Context/CatalogContext';
 import Catalog from './components/Catalog/Catalog';
 import ProductDetailPage from './components/Catalog/Product/ProductDetailPage';
-
-// Створення маршрутизатора за допомогою createBrowserRouter
-const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <MainContent />,
-    },
-    {
-        path: '/catalog',
-        element: <Catalog />,
-    },
-    {
-        path: '/product/:id',
-        element: <ProductDetailPage />,
-    },
-]);
+import Home from './components/MainContent/MainContent';
 
 function App() {
     return (
-        <RouterProvider
-            router={router} // Передаємо маршрутизатор
-            future={{
-                v7_startTransition: true,
-                v7_relativeSplatPath: true,
-                v7_fetcherPersist: true,
-                v7_normalizeFormMethod: true,
-                v7_partialHydration: true,
-                v7_skipActionErrorRevalidation: true
-            }} // Включаємо всі прапорці для тестування нових можливостей v7
-        >
-            <div className="App">
-                <Header />
-                {/* Контент буде рендеритись в залежності від маршруту */}
-                <Footer />
-            </div>
-        </RouterProvider>
+        <CatalogProvider>
+            <Router>
+                <div className="App">
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<Home />} /> {/* Головна сторінка */}
+                        <Route path="/catalog" element={<Catalog />} /> {/* Каталог */}
+                        <Route path="/product/:id" element={<ProductDetailPage />} /> {/* Деталі товару */}
+                    </Routes>
+                    <Footer />
+                </div>
+            </Router>
+        </CatalogProvider>
     );
 }
 

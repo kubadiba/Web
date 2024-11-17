@@ -1,12 +1,10 @@
-
 import React from 'react';
 import '../Catalog.css';
 
-
-export function SelectFilter({ onChange, options }) {
+export function SelectFilter({ value, onChange, options }) {
     return (
         <div className="filter-container">
-            <select onChange={onChange}>
+            <select value={value} onChange={onChange}>
                 {options.map(option => (
                     <option key={option.value} value={option.value}>
                         {option.label}

@@ -1,30 +1,21 @@
 import axios from 'axios';
+import { response } from 'express';
 
-const API_URL = 'http://localhost:3001';
+const API_BASE_URL = 'http://localhost:3002';
 
-// Функція для отримання всіх товарів з фільтрацією
-export const fetchCatalogItems = async (filters) => {
-    try {
-        const response = await axios.get(`${API_URL}/catalog`, { params: filters });
-        return response.data; // Повертаємо дані товарів
-    } catch (error) {
-        console.error('Error fetching catalog items:', error);
-        throw error;
-    }
+export const getCatalogItems = async (filters = {}) => {
+    const queryParams = new URLSearchParams(
+        Object.fromEntries(
+            Object.entries(filters).filter(([key, value]) => value !== 'All' && value !== undefined)
+        )
+    ).toString();
+
+    const response = await axios.get(`${API_BASE_URL}/catalog?${queryParams}`);
+    return response.data; 
 };
 
-// Функція для отримання одного товару за ID
-export const fetchProductById = async (id) => {
-    try {
-        const response = await axios.get(`${API_URL}/catalog/${id}`);
-        return response.data; // Повертаємо дані товару
-    } catch (error) {
-        console.error('Error fetching product by ID:', error);
-        throw error;
-    }
+export const getProductById = async (id) => {
+    const response = await axios.get(`${API_BASE_URL}/catalog/${id}`);
+    return response.data;
 };
 
-// Додавання getAllItems, щоб використовувати старий імпорт
-export const getAllItems = async () => {
-    return await fetchCatalogItems({});
-};

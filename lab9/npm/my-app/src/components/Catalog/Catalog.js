@@ -1,41 +1,48 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from '../ProductCart/ProductCard';
 import './Catalog.css';
 import { SelectFilter } from './UI/Select';
-import { fetchCatalogItems } from '../../api/apiService';  // Імпортуємо функцію для отримання даних
+import { getCatalogItems } from '../../api/apiService';
 
 const Catalog = () => {
+    const [items, setItems] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const [category, setCategory] = useState('All');
-    const [priceRange, setPriceRange] = useState('All');
+    const [authorFilter, setAuthorFilter] = useState('All');
+    const [genreFilter, setGenreFilter] = useState('All');
 
-    // Функція для отримання даних з бекенду з useCallback
-    const fetchProducts = useCallback(async () => {
-        const filters = { search: searchQuery, category, priceRange };
-        try {
+    useEffect(() => {
+        const loadItems = async () => {
             setIsLoading(true);
-            const data = await fetchCatalogItems(filters);
-            setFilteredItems(data); // Оновлюємо стани з отриманими даними
+            try {
+                const data = await getCatalogItems({});
+                setItems(data);
+                setFilteredItems(data);
+            } catch (error) {
+                console.error('Error fetching catalog items:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        loadItems();
+    }, []);
+
+    const handleApplyFilters = async () => {
+        setIsLoading(true);
+        try {
+            const filters = {
+                search: searchQuery || undefined,
+                author: authorFilter !== 'All' ? authorFilter : undefined,
+                genre: genreFilter !== 'All' ? genreFilter : undefined,
+            };
+            const data = await getCatalogItems(filters);
+            setFilteredItems(data);
         } catch (error) {
-            console.error('Error fetching products:', error);
+            console.error('Error applying filters:', error);
         } finally {
             setIsLoading(false);
         }
-    }, [searchQuery, category, priceRange]);  // Залежності: при зміні фільтрів викликаємо fetchProducts
-
-    // Викликаємо fetchProducts при зміні фільтрів
-    useEffect(() => {
-        fetchProducts();
-    }, [fetchProducts]);  // Додаємо fetchProducts в залежності, щоб уникнути попередження ESLint
-
-    const handleCategoryChange = (e) => setCategory(e.target.value);
-    const handlePriceRangeChange = (e) => setPriceRange(e.target.value);
-    const handleSearchChange = (e) => setSearchQuery(e.target.value);
-
-    const handleApplyFilters = () => {
-        fetchProducts(); // Викликаємо fetchProducts при натисканні кнопки Apply
     };
 
     return (
@@ -47,33 +54,37 @@ const Catalog = () => {
                         <input
                             type="text"
                             placeholder="Search..."
-                            onChange={handleSearchChange}
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </div>
                 </div>
 
                 <div className="filters">
-                    <div className="filter-container">
-                        <SelectFilter
-                            onChange={handleCategoryChange}
-                            options={[
-                                { value: 'All', label: 'All Categories' },
-                                { value: 'Accessories', label: 'Accessories' },
-                                { value: 'Toys', label: 'Toys' },
-                            ]}
-                        />
-                    </div>
-                    <div className="filter-container">
-                        <SelectFilter
-                            onChange={handlePriceRangeChange}
-                            options={[
-                                { value: 'All', label: 'All Price Ranges' },
-                                { value: 'Low', label: 'Low' },
-                                { value: 'Medium', label: 'Medium' },
-                                { value: 'High', label: 'High' },
-                            ]}
-                        />
-                    </div>
+                    <SelectFilter
+                        value={authorFilter}
+                        onChange={(e) => setAuthorFilter(e.target.value)}
+                        options={[
+                            { value: 'All', label: 'All Authors' },
+                            { value: 'George Orwell', label: 'George Orwell' },
+                            { value: 'J.K. Rowling', label: 'J.K. Rowling' },
+                            { value: 'Frank Herbert', label: 'Frank Herbert' },
+                            { value: 'Stephen King', label: 'Stephen King' },
+                            { value: 'Agatha Christie', label: 'Agatha Christie' },
+                        ]}
+                    />
+                    <SelectFilter
+                        value={genreFilter}
+                        onChange={(e) => setGenreFilter(e.target.value)}
+                        options={[
+                            { value: 'All', label: 'All Genres' },
+                            { value: 'Fantasy', label: 'Fantasy' },
+                            { value: 'Detective', label: 'Detective' },
+                            { value: 'Romance', label: 'Romance' },
+                            { value: 'Science', label: 'Science' },
+                            { value: 'Self-help', label: 'Self-help' },
+                        ]}
+                    />
                     <button className="apply-button" onClick={handleApplyFilters}>
                         Apply
                     </button>
@@ -83,10 +94,12 @@ const Catalog = () => {
             <section className="catalog-grid">
                 {isLoading ? (
                     <div className="spinner">Loading...</div>
-                ) : (
+                ) : filteredItems.length > 0 ? (
                     filteredItems.map((item) => (
                         <ProductCard key={item.id} {...item} />
                     ))
+                ) : (
+                    <div className="no-items">No items found</div>
                 )}
             </section>
         </main>

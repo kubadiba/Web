@@ -12,7 +12,7 @@ const ProductCard = ({ id, image, title, description, author, genre }) => {
         <div className="product-card">
             <h2>Item {id}</h2>
             <div className="product-image-placeholder">
-                <img src={image} alt={title} />
+                <img src={`http://localhost:3002${image}`} alt={title} />
             </div>
             <h3>{title}</h3>
             <p>{truncatedDescription}</p>

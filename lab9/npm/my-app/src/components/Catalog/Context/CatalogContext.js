@@ -1,41 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { getAllItems } from '../../../api/apiService'; // Запити до бекенду
-import image1 from '../../../images/11111.webp';
-import image2 from '../../../images/22.webp';
-import image3 from '../../../images/333.webp';
+import { getCatalogItems } from '../../../api/apiService';
 
 export const CatalogContext = createContext();
-
-// Локальні дані як запасні
-const fallbackData = [
-    {
-        id: '1',
-        title: "Mystery of the Lost City",
-        description: "Explore the ancient ruins of a forgotten city. This mystery novel takes readers on an adventurous journey full of secrets and surprises.",
-        author: "Agatha Christie",
-        genre: "Detective",
-        price: "$45.00",
-        image: image1,
-    },
-    {
-        id: '2',
-        title: "Beyond the Stars",
-        description: "Venture beyond the known universe in this science fiction epic.",
-        author: "Frank Herbert",
-        genre: "Science",
-        price: "$50.00",
-        image: image2,
-    },
-    {
-        id: '3',
-        title: "Whispers of the Past",
-        description: "Dive into a world of history and mystery.",
-        author: "J.K. Rowling",
-        genre: "Fantasy",
-        price: "$40.00",
-        image: image3,
-    },
-];
 
 const CatalogProvider = ({ children }) => {
     const [catalogItems, setCatalogItems] = useState([]);
@@ -51,13 +17,11 @@ const CatalogProvider = ({ children }) => {
         const fetchCatalogItems = async () => {
             try {
                 setIsLoading(true);
-                const response = await getAllItems();
-                setCatalogItems(response.data);
-                setFilteredItems(response.data); // Початковий стан фільтрованих даних
+                const data = await getCatalogItems({});
+                setCatalogItems(data);
+                setFilteredItems(data);
             } catch (error) {
-                console.error('Помилка завантаження товарів:', error);
-                setCatalogItems(fallbackData);
-                setFilteredItems(fallbackData); // Використовуємо локальні дані
+                console.error('Error loading catalog items:', error);
             } finally {
                 setIsLoading(false);
             }
